@@ -1,0 +1,8 @@
+<div *ngIf="group" [formGroup]="group">
+	<mat-form-field class="app-form-field">
+		<input matInput placeholder="{{label}}" name="{{name}}" [errorStateMatcher]="matcher"
+			   formControlName="{{name}}" maxlength="{{maxlength}}"
+			   type="{{type}}"/>
+		<mat-error *ngIf="error">{{error}}</mat-error>
+	</mat-form-field>
+</div>
