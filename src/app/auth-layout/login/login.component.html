@@ -1,0 +1,13 @@
+<mat-card>
+	<mat-card-title>Login to your account</mat-card-title>
+	<form [formGroup]='formSignIn' (ngSubmit)="onSubmit()" novalidate>
+		<app-field-input [name]='"login"' [label]='"Login"'
+						 [maxlength]="50"
+						 [group]="formSignIn" [error]="clentErrors.login"></app-field-input>
+		<app-field-input [name]='"password"' [label]='"Password"'
+						 [maxlength]="50"
+						 [group]="formSignIn" [error]="clentErrors.password"></app-field-input>
+		<br />
+		<button mat-flat-button color="primary" [disabled]="formSignIn.invalid || pending">Login</button>
+	</form>
+</mat-card>
