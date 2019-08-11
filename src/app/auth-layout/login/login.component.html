@@ -9,5 +9,14 @@
 						 [group]="formSignIn" [error]="clentErrors.password"></app-field-input>
 		<br />
 		<button mat-flat-button color="primary" [disabled]="formSignIn.invalid || pending">Login</button>
+		<br />
+		<div>
+			<br />
+			 <a [routerLink]="['/auth/updatepassword']">Forgot password?</a>
+		</div>
+		<br />
+		<div>
+			Don`t have an account? <a [routerLink]="['/auth/register']">Create One</a>
+		</div>
 	</form>
 </mat-card>

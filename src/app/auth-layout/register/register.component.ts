@@ -1,19 +1,20 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-
-import {ReactiveFieldValidators, FormErrorHandlerClass, AuthService} from '../../app-shared';
+import {ReactiveFieldValidators} from '../../app-shared/classes/reactive-field-validators.class';
+import {FormErrorHandlerClass} from '../../app-shared/classes/form-error-handler.class';
+import {AuthService} from '../../app-shared/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss', '../auth-shared.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss', '../auth-shared.scss']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
     formSignIn: FormGroup;
     pending: boolean;
     private reactiveFieldValidators: ReactiveFieldValidators;
-    private formErrors = {login: '', password: ''};
+    private formErrors = {login: '', password: '', email: '', phoneNumber: ''};
     private errorHandler: FormErrorHandlerClass;
 
     constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
@@ -33,7 +34,9 @@ export class LoginComponent implements OnInit {
     private buildForm(): void {
         this.formSignIn = this.fb.group({
             login: [''],
-            password: ['']
+            password: [''],
+            email: [''],
+            phoneNumber: ['']
 
         });
         this.formSignIn.valueChanges.subscribe(data => this.errorHandler.validateForm(this.formSignIn));
@@ -41,7 +44,7 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.pending = true;
-        this.authService.loginUser(this.formSignIn.value).subscribe(data => {
+        this.authService.registerUser(this.formSignIn.value).subscribe(data => {
             this.pending = false;
             this.router.navigate(['/']);
         }, error => {
@@ -49,4 +52,5 @@ export class LoginComponent implements OnInit {
             this.pending = false;
         });
     }
+
 }

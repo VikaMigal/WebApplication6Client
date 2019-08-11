@@ -13,10 +13,23 @@ export class AuthService {
     }
 
     loginUser(userData: AuthUser) {
-        return this.http.post('authentication', userData).map(res => {
-            sessionStorage.setItem('tokenKey', res.tokenKey);
+        return this.http.post('auth/login', userData).map(res => {
+            // sessionStorage.setItem('tokenKey', res.tokenKey);
             return res;
         });
     }
 
+    registerUser(userData: AuthUser) {
+        return this.http.post('auth/register', userData).map(res => {
+            // sessionStorage.setItem('tokenKey', res.tokenKey);
+            return res;
+        });
+    }
+
+    updatePassword(userData: AuthUser) {
+        return this.http.put('auth/updatePassword', userData).map(res => {
+            // sessionStorage.setItem('tokenKey', res.tokenKey);
+            return res;
+        });
+    }
 }

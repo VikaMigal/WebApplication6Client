@@ -8,6 +8,8 @@ const routes: Routes = [
         component: AuthLayoutComponent,
         children: [
             {path: 'login', loadChildren: './login/login.module#LoginModule'},
+            {path: 'register', loadChildren: './register/register.module#RegisterModule'},
+            {path: 'updatepassword', loadChildren: './update-password/update-password.module#UpdatePasswordModule'},
             {path: '**', redirectTo: 'login'}
             ]
     }

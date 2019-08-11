@@ -9,16 +9,16 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class HttpService {
-    private readonly url = 'http://localhost:5000/api/';
+    private readonly url = 'http://localhost:5000/';
 
     constructor(private http: HttpClient, private router: Router) {
     }
 
     private prepareOptions() {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'JwtBearer' + sessionStorage.getItem('tokenKey')} );
+        // const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'JwtBearer' + sessionStorage.getItem('tokenKey')} );
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=UTF-8'} );
         return {
-            headers: headers,
-            withCredentials: true
+            headers: headers
         };
     }
 
